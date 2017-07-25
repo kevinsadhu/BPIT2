@@ -65,10 +65,10 @@ $(document).on('ready', function () {
                 type: "create",
                 paper: {
                     ticker: escapeHtml($("input[name='ticker']").val()),
-                    par: Number($("select[name='par']").val()),
+//                    par: Number($("select[name='par']").val()),
                     qty: Number($("select[name='qty']").val()),
-                    discount: Number($("select[name='discount']").val()),
-                    maturity: Number($("select[name='maturity']").val()),
+//                    discount: Number($("select[name='discount']").val()),
+//                    maturity: Number($("select[name='maturity']").val()),
                     owner: [],
                     issuer: user.name,
                     issueDate: Date.now().toString()
@@ -366,10 +366,10 @@ function build_trades(papers, panelDesc) {
                         formatDate(Number(entries[i].issueDate), '%M/%d %I:%m%P'),
                         entries[i].cusip,
                         escapeHtml(entries[i].ticker.toUpperCase()),
-                        formatMoney(entries[i].par),
+//                        formatMoney(entries[i].par),
                         entries[i].quantity,
-                        entries[i].discount,
-                        entries[i].maturity,
+//                        entries[i].discount,
+//                        entries[i].maturity,
                         entries[i].issuer,
                         entries[i].owner
                     ];
@@ -437,10 +437,10 @@ var filter = {};
 var names = [
     "cusip",
     "ticker",
-    "par",
+//    "par",
     "qty",
-    "discount",
-    "maturity",
+//    "discount",
+//    "maturity",
     "issuer",
     "owner",
     "company"

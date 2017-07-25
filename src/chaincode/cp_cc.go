@@ -75,10 +75,10 @@ type Owner struct {
 type CP struct {
 	CUSIP     string  `json:"cusip"`
 	Ticker    string  `json:"ticker"`
-	Par       float64 `json:"par"`
+	//Par       float64 `json:"par"`
 	Qty       int     `json:"qty"`
-	Discount  float64 `json:"discount"`
-	Maturity  int     `json:"maturity"`
+	//Discount  float64 `json:"discount"`
+	//Maturity  int     `json:"maturity"`
 	Owners    []Owner `json:"owner"`
 	Issuer    string  `json:"issuer"`
 	IssueDate string  `json:"issueDate"`
@@ -96,7 +96,7 @@ type Transaction struct {
 	FromCompany string   `json:"fromCompany"`
 	ToCompany   string   `json:"toCompany"`
 	Quantity    int      `json:"quantity"`
-	Discount    float64  `json:"discount"`
+	//Discount    float64  `json:"discount"`
 }
 
 func (t *SimpleChaincode) createAccounts(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
@@ -226,10 +226,10 @@ func (t *SimpleChaincode) issueCommercialPaper(stub shim.ChaincodeStubInterface,
 		json
 	  	{
 			"ticker":  "string",
-			"par": 0.00,
+			//"par": 0.00,
 			"qty": 10,
-			"discount": 7.5,
-			"maturity": 30,
+			//"discount": 7.5,
+			//"maturity": 30,
 			"owners": [ // This one is not required
 				{
 					"company": "company1",
@@ -289,8 +289,9 @@ func (t *SimpleChaincode) issueCommercialPaper(stub shim.ChaincodeStubInterface,
 
 	cp.Owners = append(cp.Owners, owner)
 
-	suffix, err := generateCUSIPSuffix(cp.IssueDate, cp.Maturity)
-	if err != nil {
+	//suffix, err := generateCUSIPSuffix(cp.IssueDate, cp.Maturity)
+    suffix, err := generateCUSIPSuffix(cp.IssueDate, 0)
+    if err != nil {
 		fmt.Println("Error generating cusip")
 		return nil, errors.New("Error generating CUSIP")
 	}
@@ -568,8 +569,10 @@ func (t *SimpleChaincode) transferPaper(stub shim.ChaincodeStubInterface, args [
 		fmt.Println("The FromCompany owns enough of this paper")
 	}
 
-	amountToBeTransferred := float64(tr.Quantity) * cp.Par
-	amountToBeTransferred -= (amountToBeTransferred) * (cp.Discount / 100.0) * (float64(cp.Maturity) / 360.0)
+	//amountToBeTransferred := float64(tr.Quantity) * cp.Par
+	//amountToBeTransferred -= (amountToBeTransferred) * (cp.Discount / 100.0) * (float64(cp.Maturity) / 360.0)
+    
+    amountToBeTransferred := float64(tr.Quantity)
 
 	// If toCompany doesn't have enough cash to buy the papers
 	if toCompany.CashBalance < amountToBeTransferred {

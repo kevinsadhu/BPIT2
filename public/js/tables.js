@@ -53,10 +53,10 @@ function paper_to_entries(paper) {
             issueDate: paper.issueDate,
             cusip: paper.cusip,
             ticker: paper.ticker,
-            par: paper.par,
+//            par: paper.par,
             quantity: paper.owner[owner].quantity,
-            discount: paper.discount,
-            maturity: paper.maturity,
+//            discount: paper.discount,
+//            maturity: paper.maturity,
             issuer: paper.issuer,
             owner: paper.owner[owner].company
         };

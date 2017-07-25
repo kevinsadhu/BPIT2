@@ -19,18 +19,18 @@ var sort_papers = {
         var tickB = b.ticker.toUpperCase();
         return compare(tickA, tickB);
     },
-    par: function(a, b) {
-        return compare(a.par, b.par);
-    },
+//    par: function(a, b) {
+//        return compare(a.par, b.par);
+//    },
     quantity: function(a, b) {
         compare(a.quantity, b.quantity);
     },
-    discount: function(a, b) {
-        return compare(a.discount, b.discount);
-    },
-    maturity: function(a, b) {
-        return compare(a.maturity, b.maturity);
-    },
+//    discount: function(a, b) {
+//        return compare(a.discount, b.discount);
+//    },
+//    maturity: function(a, b) {
+//        return compare(a.maturity, b.maturity);
+//    },
     issuer: function(a, b) {
         var issuerA = a.issuer.toUpperCase();
         var issuerB = b.issuer.toUpperCase();
